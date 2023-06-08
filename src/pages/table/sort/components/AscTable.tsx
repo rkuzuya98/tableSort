@@ -1,7 +1,5 @@
 import { css } from "@emotion/react"
 import { useState } from "react"
-import AscTable from "./components/AscTable"
-import AscAndDscTable from "./components/AscAndDscTable"
 
 type Data = {
   id: number,
@@ -63,7 +61,7 @@ const SortIconButton = ({
   )
 }
 
-const SortTablePage = () => {
+const AscTable = () => {
 
   const [sort, setSort] = useState('id')
   const [data, setData] = useState(_data)
@@ -79,13 +77,40 @@ const SortTablePage = () => {
     <div css={css`
       font-size: 24px;
     `}>
-      <div>ソートは昇順のみのシンプルなテーブル</div>
-      <AscTable/>
-      <br/>
-      <div>ソートは昇順と降順のテーブル</div>
-      <AscAndDscTable/>
+      <table css={css`
+        /* width: 350px; */
+        /* table-layout: fixed; */
+      `}>
+        <thead>
+          <tr css={css`
+            /* background-color: red; */
+            /* width: 350px; */
+          `}>
+            <th css={styles.width.id}>id <SortIconButton name='id' sort={sort} onClick={() => handleSort('id')}/></th>
+            <th css={styles.width.name}>name <SortIconButton name='name' sort={sort}  onClick={() => handleSort('name')}/></th>
+            <th css={styles.width.age}>age <SortIconButton name='age' sort={sort}  onClick={() => handleSort('age')}/></th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            data.map((d) => {
+              return (
+                <tr
+                  key={d.id}
+                  css={css`
+                  `}
+                >
+                  <td css={styles.width.id}>{d.id}</td>
+                  <td css={styles.width.name}>{d.name}</td>
+                  <td css={styles.width.age}>{d.age}</td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </table>
     </div>
   )
 }
 
-export default SortTablePage
+export default AscTable
