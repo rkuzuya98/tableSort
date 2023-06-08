@@ -79,10 +79,10 @@ const SortTablePage = () => {
     <div css={css`
       font-size: 24px;
     `}>
-      <div>ソートは昇順のみのシンプルなテーブル</div>
+      <div>パターン①：ソートは昇順のみのシンプルなテーブル</div>
       <AscTable/>
       <br/>
-      <div>ソートは昇順と降順のテーブル</div>
+      <div>パターン②：ソートは昇順と降順のテーブル</div>
       <AscAndDscTable/>
     </div>
   )
